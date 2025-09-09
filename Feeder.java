@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Feeder {
 
     /**
@@ -10,8 +12,29 @@ public class Feeder {
      * Simulates one day with numBirds birds or possibly a bear at the bird
      * feeder, as described in part (a) Precondition: numBirds > 0
      */
+
+    private int rand(int lower, int upper) {
+        return (int)(Math.random() * (upper - lower)) + lower;
+    }
+
     public void simulateOneDay(int numBirds)
     {
+        int condition = this.rand(0, 100);
+
+        if (condition > 95) {
+            this.currentFood = 0;
+            return;
+        }
+
+        int ate = this.rand(10, 50);
+        for (int i = 0; i < numBirds; i++) {
+            if (ate > this.currentFood) {
+                this.currentFood = 0;
+                return;
+            }
+
+            this.currentFood -= ate;
+        }
     }
 
     /**
@@ -21,7 +44,10 @@ public class Feeder {
      */
     public int simulateManyDays(int numBirds, int numDays) 
     {
+        for (int i = 0; i < numDays; i++) {
+            simulateOneDay(numBirds);
+        }
+
         return 0;
     }
-
 }
