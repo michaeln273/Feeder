@@ -4,8 +4,7 @@ public class Main
     {
         Feeder f = new Feeder(500);
 
-//        f.simulateOneDay(12);
-        f.simulateManyDays(2);
+        f.simulateOneDay(12);
 
     }
 }
