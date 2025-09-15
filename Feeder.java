@@ -1,12 +1,11 @@
 import java.util.Random;
 
 public class Feeder {
-    private int currentFood;
-
     /**
      * The amount of food, in grams, currently in the bird feeder; initialized
      * in the constructor and always greater than or equal to zero
      */
+    private int currentFood;
     public Feeder(int food) {
         this.currentFood = food;
     }
@@ -46,16 +45,20 @@ public class Feeder {
      */
     public int simulateManyDays(int numBirds, int numDays) 
     {
-        int found = 0;
+        int days = 0;
 
-        for (int i = 0; i < numDays; i++) {
+        for (days = 1; days <= numDays; days++) {
             simulateOneDay(numBirds);
             if (this.currentFood == 0) {
-                return found;
+                return days;
             }
-            found++;
         }
 
-        return found;
+        return days;
+    }
+
+    public int getCurrentFood()
+    {
+        return this.currentFood;
     }
 }
