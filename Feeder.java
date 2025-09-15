@@ -46,9 +46,10 @@ public class Feeder {
     public int simulateManyDays(int numBirds, int numDays) 
     {
         int days = 0;
-
-        for (days = 1; days <= numDays; days++) {
+        while (numDays > 0) {
             simulateOneDay(numBirds);
+            numDays--;
+            days++;
             if (this.currentFood == 0) {
                 return days;
             }
